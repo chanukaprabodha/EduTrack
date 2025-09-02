@@ -12,7 +12,8 @@ const AuthLayout = () => {
         }}
     >
         <Stack.Screen name="login" options={{title: "Login"}} />
-        <Stack.Screen name="register" options={{title: "Create an account"}} />
+        <Stack.Screen name="register" options={{ title: "Create an account" }} />
+        <Stack.Screen name="forgot" options={{ title: "Forgot Password" }} />
     </Stack>
 }
 

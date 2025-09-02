@@ -1,16 +1,16 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"
-import { getFirestore} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDWahWGpTHMuqeWM0jQ1ZX57KIzc17ULYA",
-  authDomain: "task-manager-6ac4a.firebaseapp.com",
-  projectId: "task-manager-6ac4a",
-  storageBucket: "task-manager-6ac4a.firebasestorage.app",
-  messagingSenderId: "1059446031996",
-  appId: "1:1059446031996:web:d769e5b34406022ed96bf9"
+  apiKey: "AIzaSyB0AYolUWHBiRvQmVB7qr7aiU88Ei1Yiko",
+  authDomain: "edutrack-cc94f.firebaseapp.com",
+  projectId: "edutrack-cc94f",
+  storageBucket: "edutrack-cc94f.firebasestorage.app",
+  messagingSenderId: "677908331517",
+  appId: "1:677908331517:web:6264f9c1e3f7f390cbb794"
 };
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

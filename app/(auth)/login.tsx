@@ -1,11 +1,19 @@
-import { login } from '@/services/authService';
-import { useRouter } from 'expo-router';
-import { Chrome, Eye, EyeOff, Facebook, Lock, Mail } from 'lucide-react-native';
 import React, { useState } from 'react';
-import { ActivityIndicator, Alert, ScrollView, StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    ScrollView,
+    StatusBar,
+    ActivityIndicator,
+    Alert
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { Mail, Lock, Eye, EyeOff, BookCheck } from 'lucide-react-native';
+import { login } from '@/services/authService';
 
 const Login = () => {
-
     const route = useRouter();
 
     const [email, setEmail] = useState<string>("")
@@ -19,7 +27,7 @@ const Login = () => {
         setIsLoading(true);
         await login(email, password)
             .then(() => {
-                Alert.alert("Success", "User logged in successfully");
+                Alert.alert("Success", "Welcome back to EduTrack!");
                 route.push("/home");
             })
             .catch((error) => {
@@ -31,41 +39,46 @@ const Login = () => {
     }
 
     return (
-        <View className="flex-1 bg-white">
-            <StatusBar barStyle="dark-content" backgroundColor="#dbeafe" />
+        <View className="flex-1 bg-slate-50">
+            <StatusBar barStyle="dark-content" backgroundColor="#f8fafc" />
             <ScrollView
                 className="flex-1"
                 contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
                 showsVerticalScrollIndicator={false}
             >
-                <View className="flex-1 justify-center px-6 py-12">
+                <View className="flex-1 justify-center px-8 py-16">
                     <View className="w-full max-w-sm mx-auto">
-                        {/* App Logo */}
-                        <View className="items-center mb-8">
-                            <View className="mb-2 bg-blue-100 rounded-full p-3">
-                                <Lock size={32} color="#2563EB" />
+                        {/* App Logo & Branding */}
+                        <View className="items-center mb-12">
+                            <View className="mb-4 bg-emerald-50 rounded-full p-4 border border-emerald-100">
+                                <BookCheck size={36} color="#059669" />
                             </View>
-                            <Text className="text-2xl font-bold text-gray-900 mb-2">Welcome Back</Text>
-                            <Text className="text-gray-600 text-sm">Sign in to your account</Text>
+                            <Text className="text-3xl font-bold text-slate-800 mb-2">EduTrack</Text>
+                            <Text className="text-slate-600 text-base text-center leading-6">
+                                Student Attendance Tracker
+                            </Text>
+                            <Text className="text-slate-500 text-sm mt-2">
+                                Welcome back! Please sign in to continue.
+                            </Text>
                         </View>
 
                         {/* Login Form */}
-                        <View className="bg-white rounded-2xl shadow-xl p-6 mb-6">
+                        <View className="bg-white rounded-3xl shadow-sm border border-slate-100 p-8 mb-8">
                             {/* Email Input */}
-                            <View className="mb-4">
-                                <Text className="text-sm font-medium text-gray-700 mb-2">
-                                    Email
+                            <View className="mb-6">
+                                <Text className="text-sm font-medium text-slate-700 mb-3">
+                                    Email Address
                                 </Text>
                                 <View className="relative">
-                                    <View className="absolute left-3 top-3 z-10">
-                                        <Mail size={20} color="#9CA3AF" />
+                                    <View className="absolute left-4 top-4 z-10">
+                                        <Mail size={20} color="#64748b" />
                                     </View>
                                     <TextInput
                                         value={email}
                                         onChangeText={setEmail}
-                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-gray-900 bg-white"
-                                        placeholder="Enter your email"
-                                        placeholderTextColor="#9CA3AF"
+                                        className="w-full pl-12 pr-4 py-4 border border-slate-200 rounded-2xl text-slate-900 bg-slate-50 focus:bg-white focus:border-blue-400"
+                                        placeholder="your.email@example.com"
+                                        placeholderTextColor="#94a3b8"
                                         keyboardType="email-address"
                                         autoCapitalize="none"
                                         autoComplete="email"
@@ -74,112 +87,98 @@ const Login = () => {
                             </View>
 
                             {/* Password Input */}
-                            <View className="mb-4">
-                                <Text className="text-sm font-medium text-gray-700 mb-2">
+                            <View className="mb-6">
+                                <Text className="text-sm font-medium text-slate-700 mb-3">
                                     Password
                                 </Text>
                                 <View className="relative">
-                                    <View className="absolute left-3 top-3 z-10">
-                                        <Lock size={20} color="#9CA3AF" />
+                                    <View className="absolute left-4 top-4 z-10">
+                                        <Lock size={20} color="#64748b" />
                                     </View>
                                     <TextInput
                                         value={password}
                                         onChangeText={setPassword}
-                                        className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl text-gray-900 bg-white"
+                                        className="w-full pl-12 pr-14 py-4 border border-slate-200 rounded-2xl text-slate-900 bg-slate-50 focus:bg-white focus:border-blue-400"
                                         placeholder="Enter your password"
-                                        placeholderTextColor="#9CA3AF"
+                                        placeholderTextColor="#94a3b8"
                                         secureTextEntry={!showPassword}
                                         autoCapitalize="none"
                                         autoComplete="password"
                                     />
                                     <TouchableOpacity
-                                        className="absolute right-3 top-3"
+                                        className="absolute right-4 top-4"
                                         activeOpacity={0.7}
                                         onPress={() => setShowPassword((prev) => !prev)}
                                     >
                                         {showPassword ? (
-                                            <EyeOff size={20} color="#9CA3AF" />
+                                            <EyeOff size={20} color="#64748b" />
                                         ) : (
-                                            <Eye size={20} color="#9CA3AF" />
+                                            <Eye size={20} color="#64748b" />
                                         )}
                                     </TouchableOpacity>
                                 </View>
                             </View>
 
                             {/* Forgot Password Link */}
-                            <View className="items-end mb-6">
-                                <TouchableOpacity activeOpacity={0.7}>
+                            <View className="items-end mb-8">
+                                <TouchableOpacity
+                                    activeOpacity={0.7}
+                                    onPress={() => route.push("/(auth)/forgot")}
+                                >
                                     <Text className="text-sm text-blue-600 font-medium">
-                                        Forgot Password?
+                                        Forgot your password?
                                     </Text>
                                 </TouchableOpacity>
                             </View>
 
                             {/* Login Button */}
                             <TouchableOpacity
-                                className="w-full bg-blue-600 py-4 rounded-xl shadow-lg"
+                                className="w-full  bg-emerald-600 py-5 rounded-2xl shadow-lg"
+                                style={{
+                                    shadowColor: '#3b82f6',
+                                    shadowOffset: { width: 0, height: 4 },
+                                    shadowOpacity: 0.2,
+                                    shadowRadius: 8,
+                                    elevation: 6,
+                                }}
                                 activeOpacity={0.9}
                                 onPress={handleLogin}
+                                disabled={isLoading}
                             >
-                                {
-                                    isLoading ? (<ActivityIndicator size="small" color="#FFFFFF" />) : (
-                                        <Text className="text-white text-center font-semibold text-base">
-                                            Sign In
-                                        </Text>
-                                    )
-                                }
+                                {isLoading ? (
+                                    <ActivityIndicator size="small" color="#FFFFFF" />
+                                ) : (
+                                    <Text className="text-white text-center font-semibold text-lg">
+                                        Login
+                                    </Text>
+                                )}
                             </TouchableOpacity>
-
-                            {/* Divider */}
-                            <View className="flex-row items-center my-6">
-                                <View className="flex-1 h-px bg-gray-300" />
-                                <Text className="px-4 text-sm text-gray-500 bg-white">or</Text>
-                                <View className="flex-1 h-px bg-gray-300" />
-                            </View>
-
-                            {/* Social Login Buttons */}
-                            <View className="gap-3">
-                                <TouchableOpacity
-                                    className="w-full flex-row items-center justify-center px-4 py-3 border border-gray-300 rounded-xl bg-white"
-                                    activeOpacity={0.7}
-                                >
-                                    <View className="mr-3">
-                                        <Chrome size={20} color="#4B5563" />
-                                    </View>
-                                    <Text className="text-gray-700 font-medium">Continue with Google</Text>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity
-                                    className="w-full flex-row items-center justify-center px-4 py-3 border border-gray-300 rounded-xl bg-white"
-                                    activeOpacity={0.7}
-                                >
-                                    <View className="mr-3">
-                                        <Facebook size={20} color="#2563EB" />
-                                    </View>
-                                    <Text className="text-gray-700 font-medium">Continue with Facebook</Text>
-                                </TouchableOpacity>
-                            </View>
                         </View>
 
                         {/* Sign Up Link */}
                         <View className="items-center">
-                            <View className="flex-row">
-                                <Text className="text-gray-600 text-sm">
-                                    Don't have an account?{' '}
+                            <View className="flex-row items-center">
+                                <Text className="text-slate-600 text-base">
+                                    New to EduTrack?{' '}
                                 </Text>
-                                <TouchableOpacity activeOpacity={0.7}
-                                    onPress={() => route.push("/(auth)/register")}>
-                                    <Text className="text-blue-600 font-semibold text-sm">
-                                        Sign up
+                                <TouchableOpacity
+                                    activeOpacity={0.7}
+                                    onPress={() => route.push("/(auth)/register")}
+                                >
+                                    <Text className="text-emerald-600 font-semibold text-base">
+                                        Create Account
                                     </Text>
                                 </TouchableOpacity>
                             </View>
+                            <Text className="text-slate-400 text-xs mt-2 text-center">
+                                Join thousands of educators tracking attendance
+                            </Text>
                         </View>
                     </View>
                 </View>
             </ScrollView>
         </View>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
