@@ -8,7 +8,7 @@ import { useLoader } from '@/context/LoaderContext'
 import { onSnapshot } from 'firebase/firestore'
 import { Plus, Edit3, Trash2, CheckCircle, Clock, FileText } from 'lucide-react-native'
 
-const TaskScreen = () => {
+const AttendanceScreen = () => {
 
   const [tasks, setTasks] = useState<Task[]>([]);
 
@@ -139,7 +139,7 @@ const TaskScreen = () => {
                 <View className="flex-row justify-end gap-1">
                   <TouchableOpacity
                     className="flex-row items-center bg-blue-50 border border-blue-200 px-4 py-2 rounded-xl"
-                    onPress={() => router.push(`/(dashboard)/tasks/${task.id}`)}
+                    onPress={() => router.push(`/(dashboard)/attendance/${task.id}`)}
                     activeOpacity={0.7}
                   >
                     <Edit3 size={16} color="#3B82F6" />
@@ -165,7 +165,7 @@ const TaskScreen = () => {
       <View className="absolute bottom-8 right-6">
         <Pressable
           className="w-16 h-16 bg-green-500 rounded-2xl items-center justify-center shadow-lg"
-          onPress={() => { router.push('/(dashboard)/tasks/new') }}
+          onPress={() => { router.push('/(dashboard)/attendance/new') }}
           android_ripple={{ color: 'rgba(255,255,255,0.2)' }}
         >
           <Plus size={28} color="white" />
@@ -175,4 +175,4 @@ const TaskScreen = () => {
   )
 }
 
-export default TaskScreen
+export default AttendanceScreen
