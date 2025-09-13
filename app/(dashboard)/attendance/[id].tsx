@@ -76,7 +76,7 @@ const TaskFormScreen = () => {
                     <TouchableOpacity
                         className="flex-row items-center mb-6"
                         activeOpacity={0.7}
-                        onPress={() => router.push('/(dashboard)/tasks')}
+                        onPress={() => router.push('/(dashboard)/attendance')} // Navigate back to attendance list
                     >
                         <ArrowLeft size={20} color="#64748B" />
                         <Text className="text-slate-600 ml-2 font-medium">Back</Text>
