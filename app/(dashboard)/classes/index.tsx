@@ -71,45 +71,49 @@ const ClassesScreen = () => {
     const auth = getAuth();
     const userId = auth.currentUser?.uid;
 
-    console.log("Current User ID:", userId);
-
     const getColorClasses = (color: string) => {
         switch (color) {
-            case 'blue':
+            case '#60A5FA':
                 return {
                     iconBg: 'bg-blue-50',
                     iconColor: '#3b82f6',
                     accent: 'border-l-blue-500'
                 };
-            case 'emerald':
+            case '#34D399':
                 return {
-                    iconBg: 'bg-emerald-50',
-                    iconColor: '#059669',
-                    accent: 'border-l-emerald-500'
+                    iconBg: 'bg-green-50',
+                    iconColor: '#10b981',
+                    accent: 'border-l-green-500'
                 };
-            case 'purple':
+            case '#A78BFA':
                 return {
                     iconBg: 'bg-purple-50',
                     iconColor: '#8b5cf6',
                     accent: 'border-l-purple-500'
                 };
-            case 'orange':
+            case '#F59E42':
                 return {
                     iconBg: 'bg-orange-50',
                     iconColor: '#f97316',
                     accent: 'border-l-orange-500'
                 };
-            case 'red':
+            case '#F87171':
                 return {
                     iconBg: 'bg-red-50',
                     iconColor: '#dc2626',
                     accent: 'border-l-red-500'
                 };
-            case 'indigo':
+            case '#F472B6':
                 return {
-                    iconBg: 'bg-indigo-50',
-                    iconColor: '#4f46e5',
-                    accent: 'border-l-indigo-500'
+                    iconBg: 'bg-pink-50',
+                    iconColor: '#ec4899',
+                    accent: 'border-l-pink-500'
+                };
+            case '#FBBF24':
+                return {
+                    iconBg: 'bg-amber-50',
+                    iconColor: '#fbbf24',
+                    accent: 'border-l-amber-500'
                 };
             default:
                 return {
