@@ -1,12 +1,12 @@
 // Dynamic route for add & update task
 import { useLoader } from '@/context/LoaderContext'
-import { createClass, getClassById, updateClass } from '@/services/classService'
+import { createClass, getAllClassesByUserID, getClassById, updateClass } from '@/services/classService'
 import { } from '@/services/taskService'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { getAuth } from 'firebase/auth'
 import { ArrowLeft, BookOpen, GraduationCap, Plus, Save, Type, Users, X } from 'lucide-react-native'
 import React, { useEffect, useState } from 'react'
-import { Alert, SafeAreaView, ScrollView, StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, SafeAreaView, ScrollView, StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 const ClassFormScreen = () => {
 
@@ -31,11 +31,13 @@ const ClassFormScreen = () => {
         "#F472B6", // pink
         "#F59E42", // orange
     ];
-    const getRandomColor = () => colorOptions[Math.floor(Math.random() * colorOptions.length)];
-    const [color, setColor] = useState<string>(getRandomColor());
+    const [colorIndex, setColorIndex] = useState<number>(0);
+    const [color, setColor] = useState<string>(colorOptions[0]);
 
     const router = useRouter()
     const { hideLoader, showLoader } = useLoader()
+
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         const load = async () => {
@@ -67,9 +69,14 @@ const ClassFormScreen = () => {
         }
 
         try {
-            showLoader
+            setLoading(true);
+            showLoader();
+            let assignedColor = color;
             if (isNew) {
-                await createClass({ name, grade, subject, students, teacherId, color })
+                const existingClasses = await getAllClassesByUserID(teacherId);
+                const colorIdx = existingClasses.length % colorOptions.length;
+                assignedColor = colorOptions[colorIdx];
+                await createClass({ name, grade, subject, students, teacherId, color: assignedColor })
             }
             else {
                 await updateClass(id, { name, grade, subject, students, teacherId, color })
@@ -79,12 +86,13 @@ const ClassFormScreen = () => {
             console.error("Error saving class:", error);
             Alert.alert("Error", "There was an error saving the class. Please try again.")
         } finally {
-            hideLoader()
+            setLoading(false);
+            hideLoader();
         }
     }
 
     return (
-        <SafeAreaView className="flex-1 bg-gradient-to-br from-slate-50 to-blue-50">
+        <SafeAreaView className="flex-1 bg-slate-50">
             <StatusBar barStyle="dark-content" backgroundColor="#f8fafc" />
 
             <ScrollView
@@ -266,6 +274,7 @@ const ClassFormScreen = () => {
                             }}
                             activeOpacity={0.9}
                             onPress={handleSubmit}
+                            disabled={loading}
                         >
                             <View className="flex-row items-center justify-center">
                                 <Save size={20} color="white" />
