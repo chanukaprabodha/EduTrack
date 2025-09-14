@@ -1,7 +1,11 @@
 export interface Attendance {
-  id: string;
+  id?: string;
   classId: string;
-  studentName: string;
   date: string;
-  status: string;
+  records: {
+    [studentName: string]: AttendanceStatus;
+  };
 }
+
+export type AttendanceStatus = "present" | "absent" | "late";
+export type AttendanceRecords = { [student: string]: AttendanceStatus };

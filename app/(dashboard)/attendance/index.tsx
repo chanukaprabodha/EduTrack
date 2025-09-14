@@ -74,51 +74,82 @@ const AttendanceScreen = () => {
     <SafeAreaView className="flex-1 bg-slate-50">
       <StatusBar barStyle="dark-content" backgroundColor="#f8fafc" />
 
-      <ScrollView
-        className="flex-1"
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View className="px-6 py-6">
           <Text className="text-2xl font-bold text-slate-800 mb-6">Take Attendance</Text>
         </View>
 
-        {/* Class Selector or Selected Class Info */}
+        {/* Class Grid */}
         <View className="px-6">
-          {classes.map((classItem) => (
-            <TouchableOpacity
-              key={classItem.id}
-              className="bg-white rounded-2xl p-4 mb-3 shadow-sm border border-slate-100"
-              activeOpacity={0.7}
-              onPress={() => router.push(`/attendance/${classItem.id}`)}
-            >
-              <View className="flex-row items-center justify-between">
-                <View className="flex-row items-center flex-1">
-                  <View className="bg-blue-50 rounded-full p-2 mr-3">
-                    <BookOpen size={20} color={classItem.color} />
-                  </View>
-                  <View className="flex-1">
-                    <Text className="text-lg font-semibold text-slate-800">
-                      {classItem.grade} - {classItem.name}
+          <View className="flex-row flex-wrap justify-between">
+            {classes.map((classItem) => (
+              <TouchableOpacity
+                key={classItem.id}
+                className="bg-white rounded-2xl p-4 mb-4 shadow-sm"
+                style={{
+                  width: '48%',
+                  aspectRatio: 1,
+                  borderWidth: 2,
+                  borderColor: classItem.color,
+                  shadowColor: classItem.color,
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.1,
+                  shadowRadius: 4,
+                  elevation: 3,
+                }}
+                activeOpacity={0.7}
+                onPress={() => router.push(`/(dashboard)/attendance/${classItem.id}`)}
+              >
+                <View className="flex-1 justify-between">
+                  {/* Top Section - Icon and Grade */}
+                  <View className="items-center">
+                    <View
+                      className="rounded-full p-3 mb-3"
+                      style={{ backgroundColor: `${classItem.color}20` }}
+                    >
+                      <BookOpen size={24} color={classItem.color} />
+                    </View>
+                    <Text className="text-lg font-bold text-slate-800 text-center">
+                      {classItem.grade}
                     </Text>
-                    <View className="flex-row items-center mt-1">
-                      <Users size={14} color="#64748b" />
-                      <Text className="text-slate-600 text-sm ml-1">
+                  </View>
+
+                  {/* Middle Section - Class Name */}
+                  <View className="flex-1 justify-center">
+                    <Text
+                      className="text-sm font-semibold text-slate-700 text-center"
+                      numberOfLines={2}
+                    >
+                      {classItem.name}
+                    </Text>
+                  </View>
+
+                  {/* Bottom Section - Students and Subject */}
+                  <View className="items-center space-y-2">
+                    <View className="flex-row items-center">
+                      <Users size={12} color="#64748b" />
+                      <Text className="text-slate-600 text-xs ml-1">
                         {classItem.students.length} Students
                       </Text>
                     </View>
+                    <Text
+                      className="text-xs font-medium text-center px-2 py-1 rounded-full mt-2"
+                      style={{
+                        backgroundColor: `${classItem.color}15`,
+                        color: classItem.color
+                      }}
+                    >
+                      {classItem.subject}
+                    </Text>
                   </View>
                 </View>
-                <Text className="text-lg font-semibold text-slate-800">
-                  {classItem.subject}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-};
-
+}
 export default AttendanceScreen;
