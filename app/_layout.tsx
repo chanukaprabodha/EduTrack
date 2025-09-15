@@ -5,7 +5,6 @@ import { AuthProvider } from '@/context/AuthContext';
 import { LoaderProvider } from '@/context/LoaderContext';
 
 const RootLayout = () => {
-    // Slot: Wrap the screen components
     return (
         <LoaderProvider>
             <AuthProvider>

@@ -54,11 +54,11 @@ const DashboardLayout = () => {
                         <Text className={path === '/attendance' ? "text-emerald-600 text-xs font-medium" : "text-slate-400 text-xs"}>Attendance</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity className="items-center flex-1 py-2" onPress={() => route.push('/reports')}>
-                        <View className={path === '/reports' ? "bg-emerald-100 rounded-full p-2 mb-1" : "p-2 mb-1"}>
-                            <Album size={20} color={path === '/reports' ? "#059669" : "#94a3b8"} />
+                    <TouchableOpacity className="items-center flex-1 py-2" onPress={() => route.push('/attendanceHistory')}>
+                        <View className={path === '/attendanceHistory' ? "bg-emerald-100 rounded-full p-2 mb-1" : "p-2 mb-1"}>
+                            <Album size={20} color={path === '/attendanceHistory' ? "#059669" : "#94a3b8"} />
                         </View>
-                        <Text className={path === '/reports' ? "text-emerald-600 text-xs font-medium" : "text-slate-400 text-xs"}>Reports</Text>
+                        <Text className={path === '/attendanceHistory' ? "text-emerald-600 text-xs font-medium" : "text-slate-400 text-xs"}>Records</Text>
                     </TouchableOpacity>
                 </View>
             </View>

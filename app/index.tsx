@@ -9,19 +9,17 @@ const Index = () => {
     const { user, loading } = useAuth();
 
     useEffect(() => {
-        if (!loading) {
+        if (!loading && !user) {
             if (user) {
-                route.push("/(dashboard)/home")
+                route.push("/home")
             } else {
-                route.push("/(auth)/login")
+                route.push("/login")
             }
         }
     }, [loading, user]);
 
     return loading ? (
         <View
-            //   Flex1: full height
-            //   w-full: full width
             className='flex-1 w-full items-center justify-center'>
             <ActivityIndicator size="large" />
         </View>
