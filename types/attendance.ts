@@ -5,6 +5,7 @@ export interface Attendance {
   records: {
     [studentName: string]: AttendanceStatus;
   };
+  markedBy: string;
 }
 
 export type AttendanceStatus = "present" | "absent" | "late";

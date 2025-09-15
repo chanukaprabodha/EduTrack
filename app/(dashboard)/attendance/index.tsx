@@ -8,20 +8,13 @@ import {
   StatusBar
 } from 'react-native';
 import {
-  ArrowLeft,
-  Calendar,
   BookOpen,
-  Check,
-  X,
-  Save,
-  ChevronDown,
   Users
 } from 'lucide-react-native';
 import { useLoader } from '@/context/LoaderContext';
 import { getAuth } from 'firebase/auth';
 import { classColRef, getAllClassesByUserID } from '@/services/classService';
 import { Class } from '@/types/class';
-import { formattedDate } from '@/utils/dateFormat';
 import { onSnapshot } from 'firebase/firestore';
 import { router } from 'expo-router';
 
@@ -76,12 +69,15 @@ const AttendanceScreen = () => {
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <View className="px-6 py-6">
-          <Text className="text-2xl font-bold text-slate-800 mb-6">Take Attendance</Text>
+        <View className=" px-6 py-4">
+          <View className="flex-row items-center mb-2">
+            <Text className="text-2xl font-bold text-slate-800">Take Attendance</Text>
+          </View>
+          <Text className="text-slate-500 text-sm ">Choose a class to take attendance</Text>
         </View>
 
         {/* Class Grid */}
-        <View className="px-6">
+        <View className="px-6 py-4">
           <View className="flex-row flex-wrap justify-between">
             {classes.map((classItem) => (
               <TouchableOpacity
