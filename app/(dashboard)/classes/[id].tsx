@@ -1,12 +1,11 @@
 // Dynamic route for add & update task
 import { useLoader } from '@/context/LoaderContext'
 import { createClass, getAllClassesByUserID, getClassById, updateClass } from '@/services/classService'
-import { } from '@/services/taskService'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { getAuth } from 'firebase/auth'
 import { ArrowLeft, BookOpen, GraduationCap, Plus, Save, Type, Users, X } from 'lucide-react-native'
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, Alert, SafeAreaView, ScrollView, StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {Alert, SafeAreaView, ScrollView, StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 const ClassFormScreen = () => {
 

@@ -10,7 +10,6 @@ const ClassLayout = () => {
 
         <Stack.Screen
             name="[id]"
-            // options={{ title: "Task Form" }}
             options={{ headerShown: false }}
         />
     </Stack>;

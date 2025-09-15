@@ -23,51 +23,6 @@ import { router } from 'expo-router';
 import { onSnapshot } from 'firebase/firestore';
 
 const ClassesScreen = () => {
-    // Mock data for class cards
-    // const classes = [
-    //     {
-    //         id: 1,
-    //         name: "Mathematics",
-    //         grade: "Grade 10",
-    //         studentCount: 25,
-    //         color: "blue"
-    //     },
-    //     {
-    //         id: 2,
-    //         name: "Physics",
-    //         grade: "Grade 11",
-    //         studentCount: 22,
-    //         color: "emerald"
-    //     },
-    //     {
-    //         id: 3,
-    //         name: "Chemistry",
-    //         grade: "Grade 11",
-    //         studentCount: 28,
-    //         color: "purple"
-    //     },
-    //     {
-    //         id: 4,
-    //         name: "Biology",
-    //         grade: "Grade 12",
-    //         studentCount: 20,
-    //         color: "orange"
-    //     },
-    //     {
-    //         id: 5,
-    //         name: "English Literature",
-    //         grade: "Grade 9",
-    //         studentCount: 30,
-    //         color: "red"
-    //     },
-    //     {
-    //         id: 6,
-    //         name: "History",
-    //         grade: "Grade 10",
-    //         studentCount: 24,
-    //         color: "indigo"
-    //     }
-    // ];
     const auth = getAuth();
     const userId = auth.currentUser?.uid;
 
@@ -124,7 +79,7 @@ const ClassesScreen = () => {
         }
     };
 
-    const { hideLoader, showLoader } = useLoader()
+    const { hideLoader, showLoader } = useLoader();
 
     const [classes, setClasses] = useState<Class[]>([]);
 
