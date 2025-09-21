@@ -1,50 +1,149 @@
-# Welcome to your Expo app 👋
+# EduTrack
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+EduTrack is a modern **attendance management app** for schools and teachers. Built with **React Native**, **Expo**, and **Firebase**, it allows teachers to create classes, mark attendance, view reports, and manage student information—all from their mobile devices.
 
-## Get started
+---
 
-1. Install dependencies
+## 📱 Features
 
-   ```bash
-   npm install
-   ```
+### **Class Management**
+- Create and manage multiple classes
+- Add or remove students
+- Assign subjects to each class
 
-2. Start the app
+### **Attendance Management**
+- Mark students as **Present**, **Absent**, or **Late**
+- View attendance history by class
+- Real-time syncing with Firebase Firestore
 
-   ```bash
-   npx expo start
-   ```
+### **Reports & Analytics**
+- Attendance overview for each day
+- Percentage of students present, absent, or late
+- Historical records for insights
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🛠 Tech Stack
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+| Layer          | Technology                                    |
+|----------------|-----------------------------------------------|
+| Frontend       | React Native + Expo + Tailwind CSS (via NativeWind) |
+| Backend        | Firebase Authentication + Firestore           |
+| Navigation     | Expo Router                                   |
+| Icons          | Lucide React Native                           |
+| State Management | React Context API                             |
+| Loader & Alerts| Custom Loader & Alert Contexts                |
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 📂 Project Structure
 
-```bash
-npm run reset-project
+```plaintext
+EduTrack/
+├── assets/         # Images, icons, splash screens
+├── app/            # Expo Router pages
+│   ├── home/       # Home screen & dashboard
+│   ├── attendance/ # Attendance pages
+│   ├── settings/   # Settings screen
+│   └── login/      # Authentication screens
+├── context/        # React context providers
+├── services/       # Firebase & API services
+├── types/          # TypeScript types/interfaces
+├── package.json
+└── README.md
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## ⚡ Getting Started
 
-## Learn more
+### Prerequisites
 
-To learn more about developing your project with Expo, look at the following resources:
+-   Node.js >= 18
+-   Expo CLI
+-   Yarn or npm
+-   Firebase project configured
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Installation
 
-## Join the community
+1.  Clone the repository:
+    ```bash
+    git clone [https://github.com/yourusername/edu-track.git](https://github.com/yourusername/edu-track.git)
+    cd edu-track
+    ```
 
-Join our community of developers creating universal apps.
+2.  Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+3.  Install peer dependencies for Lucide:
+    ```bash
+    npx expo install react-native-svg
+    ```
+
+4.  Start the Expo development server:
+    ```bash
+    npx expo start
+    ```
+
+5.  Open the app on your Android/iOS simulator or physical device using the Expo Go app.
+
+### 🔧 Configuration
+
+Add your Firebase config in `services/firebaseConfig.ts`:
+
+```typescript
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+
+```
+
+Ensure your Firestore rules allow read/write access for authenticated users.
+
+---
+
+## 📸 Screenshots
+
+*(Add your screenshots here)*
+
+---
+
+## 🎬 Live Demo
+
+Watch a live demo of **EduTrack** in action:
+
+[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+> Replace `YOUR_VIDEO_ID` with your actual YouTube video ID.
+
+---
+
+## 🙌 Acknowledgements
+
+-   [Expo](https://expo.dev/)
+-   [React Native](https://reactnative.dev/)
+-   [Lucide Icons](https://lucide.dev/)
+-   [Firebase](https://firebase.google.com/)
+
+---
+
+## 🚀 Author
+
+**Chanuka Prabodha**
+
+[GitHub](https://github.com/your-github-profile) | [LinkedIn](https://linkedin.com/in/your-linkedin-profile)
