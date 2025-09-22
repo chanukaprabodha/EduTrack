@@ -119,7 +119,12 @@ Ensure your Firestore rules allow read/write access for authenticated users.
 
 ## 📸 Screenshots
 
-*(Add your screenshots here)*
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a62e9cda-00d3-4da4-a3d6-ce5ded6a10f3" alt="Screenshot 1" width="22%" />
+  <img src="https://github.com/user-attachments/assets/5d5ccd57-f9be-46d8-8d3e-189639fb3770" alt="Screenshot 2" width="22%" />
+  <img src="https://github.com/user-attachments/assets/536f035a-ec96-423e-b271-3d4b6b5743bb" alt="Screenshot 3" width="22%" />
+  <img src="https://github.com/user-attachments/assets/5ab71583-b2f8-4816-9b2c-9e81c537e8ee" alt="Screenshot 4" width="22%" />
+</p>
 
 ---
 
@@ -127,9 +132,7 @@ Ensure your Firestore rules allow read/write access for authenticated users.
 
 Watch a live demo of **EduTrack** in action:
 
-[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
-
-> Replace `YOUR_VIDEO_ID` with your actual YouTube video ID.
+[![Watch the demo](https://img.youtube.com/vi/T_z0WgN3kmM/0.jpg)](https://www.youtube.com/watch?v=T_z0WgN3kmM)
 
 ---
 
@@ -146,4 +149,4 @@ Watch a live demo of **EduTrack** in action:
 
 **Chanuka Prabodha**
 
-[GitHub](https://github.com/your-github-profile) | [LinkedIn](https://linkedin.com/in/your-linkedin-profile)
+[GitHub](https://github.com/chanukaprabodha) | [LinkedIn](https://linkedin.com/in/chanuka-prabodha-a78876234)
